@@ -1,0 +1,42 @@
+﻿<Window x:Class="Chapter2.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter2.View"
+        xmlns:viewmodel="clr-namespace:Chapter2.ViewModel"
+        mc:Ignorable="d"
+        Title="Chapter 2" Height="560" Width="820">
+    <Window.DataContext>
+        <viewmodel:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" VerticalAlignment="Top" Width="810" Height="520">
+            <TabItem Header="Analysis" Width="100">
+                <local:ImageAnalysisView />
+            </TabItem>
+            <TabItem Header="Description" Width="100">
+                <local:DescriptionView />
+            </TabItem>
+            <TabItem Header="Celebs" Width="100">
+                <local:CelebrityView />
+            </TabItem>
+            <TabItem Header="OCR" Width="100">
+                <local:OcrView />
+            </TabItem>
+            <TabItem Header="Thumbnail" Width="100">
+                <local:ThumbnailView />
+            </TabItem>
+            <TabItem Header="Face verification" Width="100">
+                <local:FaceVerificationView />
+            </TabItem>
+            <TabItem Header="Similar face" Width="100">
+                <local:SimilarFaceView />
+            </TabItem>
+            <TabItem Header="Face grouping" Width="100">
+                <local:FaceGroupingView />
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

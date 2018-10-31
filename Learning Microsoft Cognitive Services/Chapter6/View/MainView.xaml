@@ -1,0 +1,23 @@
+﻿<Window x:Class="Chapter6.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter6.View"
+        xmlns:viewmodel="clr-namespace:Chapter6.ViewModel"
+        mc:Ignorable="d"
+        Title="MainView" Height="500" Width="500">
+    <Window.DataContext>
+        <viewmodel:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" VerticalAlignment="Top" Height="467">
+            <TabItem Header="Spell check" Width="120">
+                <local:SpellCheckView />
+            </TabItem>
+            <TabItem Header="Text analysis" Width="120">
+                <local:TextAnalysisView />
+            </TabItem>
+        </TabControl>
+    </Grid> 
+</Window>

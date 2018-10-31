@@ -1,0 +1,49 @@
+﻿<Window x:Class="Chapter8.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter8.View"
+        xmlns:viewmodel="clr-namespace:Chapter8.ViewModel"
+        mc:Ignorable="d"
+        Title="Chapter 8" Height="600" Width="500">
+    <Window.DataContext>
+        <viewmodel:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="375" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2" Margin="5, 0, 5, 0">
+            <Label FontWeight="Bold" FontSize="14" Content="Endpoint:" />
+            <TextBox Text="{Binding Endpoint}" Width="400" />
+        </StackPanel>
+
+        <Label FontWeight="Bold" FontSize="14" Content="Input query" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+
+        <TextBox Text="{Binding InputQuery}" Grid.Row="2" Grid.Column="0" Margin="5, 0, 5, 5" />
+        <Button Content="Interpret" Command="{Binding InterpretCommand}" Grid.Row="2" Grid.Column="1" Margin="5, 0, 5, 0" Height="20" />
+
+        <ComboBox Grid.Row="3" Grid.Column="0" Margin="5, 0, 5, 0" ItemsSource="{Binding AvailableQueryExpressions}" SelectedItem="{Binding QueryExpression}" Height="30" />
+
+        <StackPanel Orientation="Vertical" Grid.Row="4" Grid.Column="1" Margin="5, 0, 5, 0">
+            <Button Content="Evaluate" Command="{Binding EvaluateCommand}" Margin="0, 5, 0, 0" />
+            <Button Content="Histogram" Command="{Binding CalculateHistogramCommand}" Margin="0, 5, 0, 0" />
+        </StackPanel>
+
+        <Label FontWeight="Bold" FontSize="14" Content="Results" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" />
+
+        <TextBox Grid.Row="6" Grid.ColumnSpan="2" Margin="5, 0, 5, 5" Text="{Binding Results}" TextWrapping="Wrap" />
+    </Grid>
+</Window>

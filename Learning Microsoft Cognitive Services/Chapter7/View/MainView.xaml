@@ -1,0 +1,25 @@
+﻿<Window x:Class="Chapter7.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter7.View"
+        xmlns:viewmodel="clr-namespace:Chapter7.ViewModel"
+        mc:Ignorable="d"
+        Title="Chapter 7" Height="450" Width="650">
+    <Window.DataContext>
+        <viewmodel:MainViewModel />
+    </Window.DataContext>
+    <StackPanel Orientation="Vertical" Margin="5">
+        <Label Content="Model" FontWeight="Bold" />
+        <ComboBox ItemsSource="{Binding AvailableModels}" DisplayMemberPath="description" SelectedItem="{Binding SelectedModel}" />
+
+        <Label Content="Products" FontWeight="Bold" />
+        <ComboBox ItemsSource="{Binding AvailableProducts}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct}" />
+
+        <Button Command="{Binding RecommendCommand}" Content="Recommend items" Width="150" Margin="0, 5, 0, 0" HorizontalAlignment="Left" />
+
+        <Label Content="Recommendations" FontWeight="Bold" />
+        <TextBox Text="{Binding Recommendations}" Height="250" />
+    </StackPanel>
+</Window>

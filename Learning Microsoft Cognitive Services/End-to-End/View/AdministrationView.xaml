@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="End_to_End.View.AdministrationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:End_to_End.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="785">
+    <StackPanel Orientation="Vertical">
+        <Label Content="Administration" FontWeight="Bold" FontSize="15" />
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Person groups" FontSize="14" Grid.Column="0" Grid.Row="0" />
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                <Label Content="Add new person group | Person group name/id:" FontSize="10" />
+                <TextBox Text="{Binding AdministrationVm.PersonGroupName}" Width="200" HorizontalAlignment="Left" Margin="5, 0, 0, 5" />
+                <Button Content="Add" Width="100" HorizontalAlignment="Left" Command="{Binding AdministrationVm.AddPersonGroupCommand}" Margin="5, 0, 0, 5" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <Label Content="Person groups:" FontSize="10" />
+                <ListBox ItemsSource="{Binding AdministrationVm.PersonGroups}" DisplayMemberPath="Name" 
+                         SelectedItem="{Binding AdministrationVm.SelectedPersonGroup}" Height="50" Margin="5, 0, 0, 5" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Delete person group" Margin="5, 0, 0, 5" Command="{Binding AdministrationVm.DeleteSelectedPersonGroup}" Width="120" />
+                    <Button Content="Train person group" Margin="5, 0, 0, 5" Command="{Binding AdministrationVm.TrainPersonGroupCommand}" Width="120" />                  
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical">
+                <Label Content="Add new person | Person name:" FontSize="10" />
+                <TextBox Text="{Binding AdministrationVm.PersonName}" Width="200" HorizontalAlignment="Left" Margin="5, 0, 0, 5" />
+                <Button Content="Add" Width="100" HorizontalAlignment="Left" Command="{Binding AdministrationVm.AddPersonCommand}" Margin="5, 0, 0, 5" />
+            </StackPanel>
+
+            <Label Content="Persons" FontSize="14" Grid.Column="0" Grid.Row="2" />
+            <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical">
+                <Label Content="Persons:" FontSize="10" />
+                <ListBox ItemsSource="{Binding AdministrationVm.Persons}" DisplayMemberPath="Name" 
+                         SelectedItem="{Binding AdministrationVm.SelectedPerson}" Height="50" Margin="5, 0, 0, 5" />
+                <StackPanel Orientation="Horizontal" Margin="5, 0, 0, 5">
+                    <Button Content="Delete person" Command="{Binding AdministrationVm.DeletePersonCommand}" Width="100" Margin="0, 0, 5, 0" />
+                    <Button Content="Add face" Command="{Binding AdministrationVm.AddPersonFaceCommand}" Width="100" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="500" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Speaker profiles" FontSize="14" Grid.Column="0" Grid.Row="0" />
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                <Label Content="Add new speaker profile" FontSize="10" />
+                <Button Content="Add" Width="100" HorizontalAlignment="Left" Command="{Binding AdministrationVm.AddSpeakerNameCommand}" Margin="5, 0, 0, 5" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <Label Content="Speaker profiles:" FontSize="10" />
+                <ListBox ItemsSource="{Binding AdministrationVm.SpeakerProfiles}" 
+                         SelectedItem="{Binding AdministrationVm.SelectedSpeakerProfile}" Height="50" Margin="5, 0, 0, 5" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Delete speaker" Margin="5, 0, 0, 5" Command="{Binding AdministrationVm.DeleteSpeakerProfileCommand}" Width="120" />
+                    <Button Content="Start enrollment rec." Margin="5, 0, 0, 5" Command="{Binding AdministrationVm.EnrollSpeakerCommand}" Width="120" />
+                    <Button Content="Stop recording" Margin="5, 0, 0, 5" Command="{Binding AdministrationVm.StopRecordingCommand}" Width="120" />
+                    <Button Content="Reset enrollment" Margin="5, 0, 0, 5" Command="{Binding AdministrationVm.ResetEnrollmentsCommand}" Width="120" />
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+        <Label Content="Status:" FontSize="11" FontWeight="Bold" />
+        <Label Content="{Binding AdministrationVm.StatusText}" FontSize="10" />
+    </StackPanel>
+</UserControl>

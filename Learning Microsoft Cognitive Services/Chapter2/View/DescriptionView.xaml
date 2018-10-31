@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Chapter2.View.DescriptionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chapter2.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="810">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="130" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Content="Image URL:" Grid.Row="0" Grid.Column="0" FontWeight="Bold" />
+                <Label Content="# of descriptions:" Grid.Row="0" Grid.Column="1" FontWeight="Bold" />
+
+                <TextBox Text="{Binding DescriptionVm.ImageUrl, Mode=TwoWay}" Height="30" Grid.Column="0" Grid.Row="1" />
+                <TextBox Text="{Binding DescriptionVm.NumberOfDescriptions, Mode=TwoWay}" Height="30" Grid.Column="1" Grid.Row="1" />
+                
+                <Button Content="Browse and analyze" Command="{Binding DescriptionVm.LoadAndDescribeCommand}" 
+                        Grid.Column="0" Grid.Row="2" Width="120" HorizontalAlignment="Left" />
+            </Grid>
+            
+            <Image Stretch="Uniform" Source="{Binding DescriptionVm.ImageSource}" Height="470" Width="395" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Text="Description(s):" FontWeight="Bold" FontSize="15" Margin="5, 5" Height="20" />
+            <TextBox Text="{Binding DescriptionVm.Description}" Margin="5, 0, 5, 5" Height="485" />
+        </StackPanel>
+    </Grid>
+</UserControl>

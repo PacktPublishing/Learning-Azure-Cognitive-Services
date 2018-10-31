@@ -1,0 +1,33 @@
+﻿<Window x:Class="Chapter9.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
+        xmlns:local="clr-namespace:Chapter9.View"
+        xmlns:viewmodel="clr-namespace:Chapter9.ViewModel"
+        mc:Ignorable="d"
+        Title="Chapter 9" Height="500" Width="540">
+    <Window.DataContext>
+        <viewmodel:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0, 5, 0, 0">
+            <Label Content="Search type:" />
+            <ComboBox Width="150" ItemsSource="{Binding SearchTypes}" SelectedItem="{Binding SelectedSearchType}" />
+            
+            <Label Content="Seach query:" />
+            <TextBox Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Suggestions}" Width="150" Margin="5, 0, 5, 0" />
+                        
+            <Button Content="Search" Command="{Binding SearchCommand}" Margin="5, 0, 5, 0" Width="50" />
+        </StackPanel>
+        
+        <TextBox Text="{Binding SearchResult}" Grid.Row="2" Margin="5" />
+    </Grid>
+</Window>

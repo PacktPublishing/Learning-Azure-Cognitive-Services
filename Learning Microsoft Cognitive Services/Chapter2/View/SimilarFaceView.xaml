@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Chapter2.View.SimilarFaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chapter2.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="810">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Face list name:" FontWeight="Bold" FontSize="15" />
+            <TextBox Text="{Binding SimilarFaceVm.FaceListName, Mode=TwoWay}" Margin="5, 0, 5, 0" />
+            <Button Content="Generate face list" Command="{Binding SimilarFaceVm.CreateFaceListCommand}" Margin="5, 5, 5, 0" />
+            <Button Content="Add faces to list" Command="{Binding SimilarFaceVm.AddExampleFacesToListCommand}" Margin="5, 5, 5, 0" />
+            <Label Content="Face IDs:" FontWeight="Bold" FontSize="15" />
+            <ListBox x:Name="VisualFeatures" ItemsSource="{Binding SimilarFaceVm.FaceIds}" Height="150" Margin="5, 0, 5, 0" />
+            <Button Content="Find similar faces" Command="{Binding SimilarFaceVm.FindSimilarFaceCommand}" Margin="5, 5, 5, 0" />
+
+            <Grid Margin="5, 5, 5, 0" Height="195">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding SimilarFaceVm.ImageSource}" Stretch="Uniform" Grid.Column="0" />
+                <TextBox Text="{Binding SimilarFaceVm.SimilarResult}" Grid.Column="1" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

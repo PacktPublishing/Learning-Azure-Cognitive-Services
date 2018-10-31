@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="End_to_End.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:End_to_End.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="785">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="190" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Smart Home" FontSize="15" FontWeight="Bold" Grid.Row="0" Grid.Column="0" />
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+            <Label Content="Logon to group:" FontSize="12" />
+            <ListBox ItemsSource="{Binding HomeVm.PersonGroups}" SelectedItem="{Binding HomeVm.SelectedPersonGroup}" 
+                     DisplayMemberPath="Name" Height="100" Margin="5, 5, 5, 0" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Image logon" Command="{Binding HomeVm.UploadOwnerImageCommand}"  
+                Width="100" HorizontalAlignment="Left" Margin="5, 5, 5, 0" />
+                <Button Content="Start Camera" Command="{Binding HomeVm.StartCameraCommand}" Width="100" HorizontalAlignment="Center" Margin="5, 5, 5, 0" />
+                <Button Content="Stop camera" Command="{Binding HomeVm.StopCameraCommand}" Width="100" HorizontalAlignment="Right" Margin="5, 5, 5, 0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Start Recording" Command="{Binding HomeVm.StartSpeakerRecording}" Width="100" HorizontalAlignment="Center" Margin="5, 5, 5, 0" />
+                <Button Content="Stop Recording" Command="{Binding HomeVm.StopSpeakerRecording}" Width="100" HorizontalAlignment="Right" Margin="5, 5, 5, 0" />                
+            </StackPanel>
+        </StackPanel>
+
+        <Label Content="{Binding HomeVm.SystemResponse}" Grid.Row="1" Grid.Column="1" FontSize="12" />
+        
+        <Image Source="{Binding HomeVm.ImageSource}" Grid.Row="3" Grid.Column="0" Stretch="Uniform" />
+    </Grid>
+</UserControl>

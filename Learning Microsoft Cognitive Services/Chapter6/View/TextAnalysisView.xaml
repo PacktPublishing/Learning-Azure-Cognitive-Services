@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Chapter6.View.TextAnalysisView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chapter6.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="447" d:DesignWidth="442">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="327" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Input query:" FontWeight="Bold" FontSize="15" Grid.Row="0" />
+
+        <TextBox Text="{Binding TextAnalysisVm.InputQuery}" Grid.Row="1" Grid.ColumnSpan="2" Margin="5, 0, 5, 0" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="5, 5, 5, 0">
+            <Button Content="Detect language" Command="{Binding TextAnalysisVm.DetectLanguageCommand}" Width="110" Margin="0, 0, 5, 0" />
+            <Button Content="Detect key phrases" Command="{Binding TextAnalysisVm.DetectKeyPhrasesCommand}" Width="110" Margin="0, 0, 5, 0" />
+            <Button Content="Detect sentiment" Command="{Binding TextAnalysisVm.DetectSentimentCommand}" Width="110" Margin="0, 0, 5, 0" />
+        </StackPanel>
+
+        <Label Content="Results:" FontWeight="Bold" FontSize="15" Grid.Row="3" />
+
+        <TextBox Text="{Binding TextAnalysisVm.Result}" Grid.Row="4" Grid.ColumnSpan="2" Margin="5, 0, 5, 0" />
+    </Grid>
+</UserControl>
